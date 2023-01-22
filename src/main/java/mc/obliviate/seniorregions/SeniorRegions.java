@@ -55,8 +55,9 @@ public class SeniorRegions extends JavaPlugin {
             public void onInteract(PlayerInteractEvent e) {
                 if (e.getClickedBlock() == null) return;
                 List<Region> regions = Region.findByLoc(e.getClickedBlock().getLocation());
-                if (regions.stream().allMatch(region -> region.getPlayers().contains(e.getPlayer().getUniqueId())))
-                    return;
+                if (regions.stream().allMatch(region -> region.getPlayers().contains(e.getPlayer().getUniqueId()))) return;
+                if (e.getPlayer().hasPermission("region.bypass")) return;
+
                 e.setCancelled(true);
                 e.getPlayer().sendMessage(ChatColor.RED + "You cannot interact with this area.");
             }

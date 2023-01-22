@@ -40,6 +40,11 @@ public class RegionCmd implements CommandExecutor {
     }
 
     private boolean handleCreate(Player player, List<String> args) {
+        if (!player.hasPermission("region.create")) {
+            player.sendMessage(ChatColor.RED + "You don't have enough permission.");
+            return false;
+        }
+
         if (args.size() == 1) {
             player.sendMessage(ChatColor.RED + "/region create <region name>");
             return false;
@@ -57,6 +62,11 @@ public class RegionCmd implements CommandExecutor {
     }
 
     private boolean handleAdd(Player player, List<String> args) {
+        if (!player.hasPermission("region.add")) {
+            player.sendMessage(ChatColor.RED + "You don't have enough permission.");
+            return false;
+        }
+
         if (args.size() == 1) {
             player.sendMessage(ChatColor.RED + "/region add <region> <player>");
             return false;
@@ -81,6 +91,10 @@ public class RegionCmd implements CommandExecutor {
     }
 
     private boolean handleRemove(Player player, List<String> args) {
+        if (!player.hasPermission("region.remove")) {
+            player.sendMessage(ChatColor.RED + "You don't have enough permission.");
+            return false;
+        }
         if (args.size() == 1) {
             player.sendMessage(ChatColor.RED + "/region remove <region> <player>");
             return false;
@@ -104,6 +118,11 @@ public class RegionCmd implements CommandExecutor {
     }
 
     private boolean handleWhitelist(Player player, List<String> args) {
+        if (!player.hasPermission("region.whitelist")) {
+            player.sendMessage(ChatColor.RED + "You don't have enough permission.");
+            return false;
+        }
+
         if (args.size() == 1) {
             player.sendMessage(ChatColor.RED + "/region whitelist <region>");
             return false;
@@ -129,6 +148,10 @@ public class RegionCmd implements CommandExecutor {
     }
 
     private boolean handleGuiOfRegion(Player player, List<String> args) {
+        if (!player.hasPermission("region.menu")) {
+            player.sendMessage(ChatColor.RED + "You don't have enough permission.");
+            return false;
+        }
         String regionName = args.get(0);
         Optional<Region> region = Region.findByName(regionName);
         if (region.isEmpty()) {
@@ -141,6 +164,10 @@ public class RegionCmd implements CommandExecutor {
     }
 
     private boolean handleGuiOfRegions(Player player, List<String> args) {
+        if (!player.hasPermission("region.menu")) {
+            player.sendMessage(ChatColor.RED + "You don't have enough permission.");
+            return false;
+        }
         new RegionsGui(player).open();
         return true;
     }

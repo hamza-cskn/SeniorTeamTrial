@@ -29,6 +29,8 @@ public class RegionGui extends Gui {
                 setTitle("Region: " + region.getName());
                 open();
                 player.sendMessage(ChatColor.YELLOW + "Updated.");
+                player.sendMessage(ChatColor.YELLOW + "Type a name to rename the region. Type 'cancel' to cancel the process.");
+
             });
             player.closeInventory();
         }));
@@ -45,6 +47,8 @@ public class RegionGui extends Gui {
                 open();
             });
             player.closeInventory();
+            player.sendMessage(ChatColor.YELLOW + "Type a player name to add from whitelist. Type 'cancel' to cancel the process.");
+
         }));
 
         addItem(15, new Icon(Material.RED_WOOL).setName(ChatColor.GOLD + "Whitelist Remove").setLore(ChatColor.YELLOW + "Click to remove").onClick(e -> {
@@ -52,7 +56,7 @@ public class RegionGui extends Gui {
                 player.performCommand("region remove " + region.getName() + " " + chatEvent.getMessage());
                 open();
             });
-            player.sendMessage("");
+            player.sendMessage(ChatColor.YELLOW + "Type a player name to remove from whitelist. Type 'cancel' to cancel the process.");
             player.closeInventory();
         }));
     }

@@ -1,0 +1,7 @@
+main: mc.obliviate.seniorregions.SeniorRegions
+name: senior-regions
+author: Mr_Obliviate
+version: 1.0.0
+api-version: 1.13
+commands:
+  region:

@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+sourceCompatibility = 16
+compileJava.options.encoding = 'UTF-8'
+
+group 'mc.obliviate'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.codemc.org/repository/nms/' }
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot:1.16.4-R0.1-SNAPSHOT'
+    implementation 'com.github.hamza-cskn.obliviate-invs:core:4.1.10'
+}
+
+tasks.shadowJar {
+    archiveFileName.set("senior-regions.jar")
+}
+
+project.setLibsDirName('D:/Users/User/Desktop/Setups/LOCAL 1.19/plugins')
+targetCompatibility = JavaVersion.VERSION_16
